@@ -1,5 +1,4 @@
 name: Unit Tests
-uses: mattallty/jest-github-action@v1
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -8,5 +7,11 @@ env:
 
 on: [push, pull_request]
 
-with:
-  test-command: "npm run test:ci"
+jobs:
+  tests:
+    name: "Unit tests"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: npm ci
+      - run: npm run test:ci
