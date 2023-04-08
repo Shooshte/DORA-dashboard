@@ -18,10 +18,6 @@ jobs:
           node-version: 16
       - name: Install dependencies
         run: npm ci
-      - name: Build production
-        run: npm run build
-      - name: Start server
-        run: npm run start
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
