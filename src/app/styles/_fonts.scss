@@ -1,0 +1,61 @@
+$font-family: "Quicksand", sans-serif;
+
+// Base font size defines the font-size of the html element. Changing this should scale the rest of the elements for the whole app.
+$base-font-size: 16px;
+$label-size: 0.8125rem;
+$max-text-width: 40rem;
+
+// maximum content width, not sure where else to put this
+$max-content-width: 1240px;
+
+// Bold is used to distinguish important info in a sentence/table etc.
+$font-weights: (
+  "normal": 400,
+  "bold": 500,
+);
+
+// 1 is the biggest heading, 5 is for base fonts and 6 is for labels
+$font-sizes: (
+  "1": 2.625rem,
+  "2": 2.0625rem,
+  "3": 1.625rem,
+  "4": 1.25rem,
+  "5": 1rem,
+  "6": 0.8125rem,
+);
+
+$line-height-sizes: (
+  "1": 1.547,
+  "2": 1.575,
+  "3": 1.615,
+  "4": 1.65,
+  "5": 1.6875,
+  "6": 1.7692,
+);
+
+// These should also be used for spacing between different elements on the page. They are inside font variables since they are relative to the base font-size
+$spacing-sizes: (
+  "1": 2.75rem,
+  "2": 1.6875rem,
+  "3": 1.0625rem,
+  "4": 0.6875rem,
+  "5": 0.4375rem,
+  "6": 0.25rem,
+);
+
+@mixin get-text-color($background-color) {
+  $color-brightness: round(
+    (red($background-color) * 299) + (green($background-color) * 587) +
+      (blue($background-color) * 114) * 0.001
+  );
+  $light-color: round(
+    (red(#ffffff) * 299) + (green(#ffffff) * 587) + (blue(#ffffff) * 114) *
+      0.001
+  );
+
+  @if abs($color-brightness) < ($light-color * 0.5) {
+    color: $light-text-color;
+  } @else {
+    color: $dark-text-color;
+  }
+}

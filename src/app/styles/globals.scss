@@ -1,0 +1,105 @@
+@import "variables";
+
+html {
+  background-color: $primary-color;
+  color: $light-text-color;
+  font-family: $font-family;
+  font-size: $base-font-size;
+  height: 100%;
+  width: 100%;
+}
+
+.label {
+  font-size: map-get($font-sizes, "6");
+  line-height: map-get($line-height-sizes, "6");
+  margin-bottom: map-get($spacing-sizes, "6");
+  max-width: $max-text-width;
+}
+
+.link {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.list {
+  font-size: map-get($font-sizes, "5");
+  line-height: map-get($line-height-sizes, "5");
+  list-style: circle;
+  margin-bottom: map-get($spacing-sizes, "3");
+  margin-inline-start: map-get($spacing-sizes, "2");
+  li {
+    max-width: $max-text-width;
+  }
+}
+
+ol.list {
+  list-style: auto;
+}
+
+.pill {
+  background-color: $accent-blue;
+  border-radius: 30px;
+  display: inline-block;
+  font-weight: map-get($font-weights, "bold");
+  font-size: map-get($font-sizes, "6");
+  @include get-text-color($accent-blue);
+  line-height: 1.2;
+  margin-right: map-get($spacing-sizes, "5");
+  padding: map-get($spacing-sizes, "6") map-get($spacing-sizes, "4");
+  text-transform: uppercase;
+}
+
+.pill:last-child {
+  margin-right: 0;
+}
+
+.text-accent {
+  color: $accent-blue;
+}
+
+.text {
+  font-size: map-get($font-sizes, "5");
+  line-height: map-get($line-height-sizes, "5");
+  margin-bottom: map-get($spacing-sizes, "5");
+  max-width: $max-text-width;
+}
+
+@each $number, $font-size in $font-sizes {
+  .heading-#{$number} {
+    font-size: $font-size;
+    font-weight: map-get($font-weights, "bold");
+    max-width: $max-text-width;
+    padding: 0;
+  }
+}
+
+@each $number, $line-height in $line-height-sizes {
+  .heading-#{$number} {
+    line-height: $line-height;
+  }
+}
+
+@each $number, $margin in $spacing-sizes {
+  .heading-#{$number} {
+    margin: 0;
+    margin-bottom: $margin;
+  }
+  .margin-top-#{$number} {
+    margin-top: $margin;
+  }
+  .margin-bottom-#{$number} {
+    margin-bottom: $margin;
+  }
+  .margin-left-#{$number} {
+    margin-left: $margin;
+  }
+  .margin-right-#{$number} {
+    margin-right: $margin;
+  }
+  .margin-#{$number} {
+    margin: $margin;
+  }
+  .padding-#{$number} {
+    padding: $margin;
+  }
+}
